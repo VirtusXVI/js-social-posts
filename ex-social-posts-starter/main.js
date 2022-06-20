@@ -67,7 +67,7 @@ function postsGeneration(posts,postsList){
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${i}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -78,13 +78,21 @@ function postsGeneration(posts,postsList){
                 </div> 
             </div>            
         </div>`
-        let likeButton = document.querySelector(".like-button");
-        let likeCounter = document.querySelector("#like-counter-1");
-        likeButton.addEventListener("click", function(){
-            event.preventDefault();
+        let likeButton = document.querySelectorAll(".like-button");
+        let likeCounter = document.querySelectorAll("#like-counter-1");
+        console.log(likeButton);
+        console.log(likeCounter);
+        likeButton[i].addEventListener("click", function(){
+        event.preventDefault();
+        if(likeButton.classList.contains("like-button--liked")){
+            likeButton.innerHTML = posts[i].postLikes -= 1;
+            likeCounter.classList.remove("like-button--liked");
+        }else{
             likeButton.classList.add("like-button--liked");
             likeCounter.innerHTML = posts[i].postLikes += 1;
             console.log(posts[i].likes);
-        })
+        }
+    })
     }
+    
 }
