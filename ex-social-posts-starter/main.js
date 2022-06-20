@@ -78,21 +78,26 @@ function postsGeneration(posts,postsList){
                 </div> 
             </div>            
         </div>`
-        let likeButton = document.querySelectorAll(".like-button");
-        let likeCounter = document.querySelectorAll("#like-counter-1");
-        console.log(likeButton);
-        console.log(likeCounter);
-        likeButton[i].addEventListener("click", function(){
-        event.preventDefault();
-        if(likeButton.classList.contains("like-button--liked")){
-            likeButton.innerHTML = posts[i].postLikes -= 1;
-            likeCounter.classList.remove("like-button--liked");
-        }else{
-            likeButton.classList.add("like-button--liked");
-            likeCounter.innerHTML = posts[i].postLikes += 1;
-            console.log(posts[i].likes);
-        }
-    })
+        
     }
+    let likeButton = document.querySelectorAll(".like-button");
+    let likeCounter = document.querySelectorAll(".js-likes-counter");
+    for(let i = 0;i < posts.length;i++){
+        let likeBtn = likeButton[i];
+        let likeCount = likeCounter[i];
+        likeBtn.addEventListener("click", function(){
+            event.preventDefault();
+            if(likeBtn.classList.contains("like-button--liked")){
+                likeCount.innerHTML = posts[i].postLikes -= 1;
+                likeBtn.classList.remove("like-button--liked");
+            }else{
+                likeBtn.classList.add("like-button--liked");
+                likeCount.innerHTML = posts[i].postLikes += 1;
+                console.log(posts);
+            }
+        });
+    }
+    // console.log(likeButton);
+    // console.log(likeCounter);
     
 }
