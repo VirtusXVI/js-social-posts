@@ -21,7 +21,7 @@ let posts = [
         postDate: "11/05/2022",
         postText: "ciao",
         postImage: "https://picsum.photos/100/100?random=1",
-        postLikes: "100",
+        postLikes: 100,
     },
     {
         postId: 2,
@@ -30,7 +30,7 @@ let posts = [
         postDate: "11/05/2022",
         postText: "ciao",
         postImage: "https://picsum.photos/100/100?random=1",
-        postLikes: "100",
+        postLikes: 100,
     },
     {
         postId: 3,
@@ -39,7 +39,7 @@ let posts = [
         postDate: "11/05/2022",
         postText: "ciao",
         postImage: "https://picsum.photos/100/100?random=1",
-        postLikes: "100",
+        postLikes: 100,
     }
 ]
 postsGeneration(posts,postsList);
@@ -78,5 +78,13 @@ function postsGeneration(posts,postsList){
                 </div> 
             </div>            
         </div>`
+        let likeButton = document.querySelector(".like-button");
+        let likeCounter = document.querySelector("#like-counter-1");
+        likeButton.addEventListener("click", function(){
+            event.preventDefault();
+            likeButton.classList.add("like-button--liked");
+            likeCounter.innerHTML = posts[i].postLikes += 1;
+            console.log(posts[i].likes);
+        })
     }
 }
